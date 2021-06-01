@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+
+local_head=$(git rev-parse HEAD)
+remote_head=$(git ls-remote origin | grep HEAD | cut -f1)
+if [[ $local_head == $remote_head ]]; then
+	echo "up-to-date"
+else
+	echo "potentially out-of-date"
+fi
